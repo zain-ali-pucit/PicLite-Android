@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.axain.photocompressor.app-debug-54:/xml_file_paths.xml.flat",
+        "source": "com.axain.photocompressor.app-main-56:/xml/file_paths.xml"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.axain.photocompressor.app-main-56:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-54:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.axain.photocompressor.app-main-56:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-54:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.axain.photocompressor.app-main-56:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-54:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.axain.photocompressor.app-main-56:/drawable/ic_launcher_foreground.xml"
+    }
+]
