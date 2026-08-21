@@ -60,9 +60,9 @@ com.axain.photocompressor.app-navigation-common-ktx-2.8.4-58 /Users/macbookpro/.
 com.axain.photocompressor.app-navigation-runtime-2.8.4-59 /Users/macbookpro/.gradle/caches/8.9/transforms/f6bfc79397eaae52f7e633240ab49e22/transformed/navigation-runtime-2.8.4/res
 com.axain.photocompressor.app-play-services-basement-18.4.0-60 /Users/macbookpro/.gradle/caches/8.9/transforms/f98a532d5b8713212a84ce9d165170ed/transformed/play-services-basement-18.4.0/res
 com.axain.photocompressor.app-ui-graphics-release-61 /Users/macbookpro/.gradle/caches/8.9/transforms/fedd5b0908a4adc41ae2797ac8e315c2/transformed/ui-graphics-release/res
-com.axain.photocompressor.app-resValues-62 /Users/macbookpro/Desktop/Mobile-Apps/PhotoCompressorApp/PicLite-Android/app/build/generated/res/resValues/debug
-com.axain.photocompressor.app-packageDebugResources-63 /Users/macbookpro/Desktop/Mobile-Apps/PhotoCompressorApp/PicLite-Android/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-com.axain.photocompressor.app-packageDebugResources-64 /Users/macbookpro/Desktop/Mobile-Apps/PhotoCompressorApp/PicLite-Android/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-com.axain.photocompressor.app-debug-65 /Users/macbookpro/Desktop/Mobile-Apps/PhotoCompressorApp/PicLite-Android/app/build/intermediates/merged_res/debug/mergeDebugResources
-com.axain.photocompressor.app-debug-66 /Users/macbookpro/Desktop/Mobile-Apps/PhotoCompressorApp/PicLite-Android/app/src/debug/res
-com.axain.photocompressor.app-main-67 /Users/macbookpro/Desktop/Mobile-Apps/PhotoCompressorApp/PicLite-Android/app/src/main/res
+com.axain.photocompressor.app-resValues-62 /Users/macbookpro/Desktop/Axain Studios/Mobile-Apps/PicLite/PicLite-Android/app/build/generated/res/resValues/debug
+com.axain.photocompressor.app-packageDebugResources-63 /Users/macbookpro/Desktop/Axain Studios/Mobile-Apps/PicLite/PicLite-Android/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.axain.photocompressor.app-packageDebugResources-64 /Users/macbookpro/Desktop/Axain Studios/Mobile-Apps/PicLite/PicLite-Android/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.axain.photocompressor.app-debug-65 /Users/macbookpro/Desktop/Axain Studios/Mobile-Apps/PicLite/PicLite-Android/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.axain.photocompressor.app-debug-66 /Users/macbookpro/Desktop/Axain Studios/Mobile-Apps/PicLite/PicLite-Android/app/src/debug/res
+com.axain.photocompressor.app-main-67 /Users/macbookpro/Desktop/Axain Studios/Mobile-Apps/PicLite/PicLite-Android/app/src/main/res

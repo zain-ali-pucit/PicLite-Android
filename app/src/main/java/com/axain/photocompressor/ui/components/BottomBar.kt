@@ -2,6 +2,7 @@ package com.axain.photocompressor.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,11 +10,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -26,6 +30,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,7 +54,10 @@ fun BottomBar(
     val g = rememberBrandGradients(dark)
     Row(
         modifier
+            // Sit above the system navigation bar (gesture pill or 3-button) on any device.
+            .windowInsetsPadding(WindowInsets.navigationBars)
             .padding(horizontal = 16.dp)
+            .padding(bottom = 8.dp)
             .fillMaxWidth()
             .height(64.dp)
             .shadow(16.dp, RoundedCornerShape(30.dp))
@@ -66,7 +74,12 @@ fun BottomBar(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
-                Modifier.size(56.dp).clip(CircleShape).background(g.hero).clickable(onClick = onPlus),
+                Modifier.size(56.dp).clip(CircleShape).background(g.hero)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = onPlus
+                    ),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(Icons.Rounded.Add, contentDescription = "Add", tint = Color.White,
@@ -82,15 +95,17 @@ fun BottomBar(
 private fun RowScope.BarItem(active: Boolean, icon: ImageVector, label: String, onClick: () -> Unit) {
     val tint = if (active) Violet else MaterialTheme.colorScheme.onSurfaceVariant
     Column(
-        Modifier.weight(1f).fillMaxHeight().clickable(onClick = onClick),
+        Modifier.weight(1f).fillMaxHeight()
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
-            Modifier
-                .clip(RoundedCornerShape(18.dp))
-                .background(if (active) Violet.copy(alpha = 0.12f) else Color.Transparent)
-                .padding(horizontal = 14.dp, vertical = 7.dp),
+            Modifier.padding(horizontal = 14.dp, vertical = 7.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(icon, contentDescription = label, tint = tint, modifier = Modifier.size(17.dp))

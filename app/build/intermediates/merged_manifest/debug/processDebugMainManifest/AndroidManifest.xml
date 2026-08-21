@@ -78,6 +78,7 @@
         <activity
             android:name="com.axain.photocompressor.MainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.PhotoCompressor"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
