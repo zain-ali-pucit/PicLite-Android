@@ -24,8 +24,10 @@ import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import com.axain.photocompressor.domain.LocalHistoryStore
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -54,6 +56,16 @@ fun ConvertScreen(dark: Boolean, onBack: () -> Unit) {
     val g = rememberBrandGradients(dark)
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val store = LocalHistoryStore.current
+
+    LaunchedEffect(Unit) {
+        if (state.sources.isEmpty() && store.handoff.isNotEmpty()) {
+            vm.adopt(store.handoff); store.handoff = emptyList()
+        }
+    }
+    LaunchedEffect(state.results) {
+        if (state.results.isNotEmpty()) store.record(state.results)
+    }
 
     val picker = rememberLauncherForActivityResult(
         ActivityResultContracts.PickMultipleVisualMedia(20)

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.axain.photocompressor.app-mergeDebugResources-52:/values-v21/values-v21.xml",
+            "outputFile": "com.axain.photocompressor.app-mergeDebugResources-64:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/macbookpro/.gradle/caches/8.9/transforms/2f075862beb4412b6c7c4d61eb6ace32/transformed/core-1.13.1/res/values-v21/values-v21.xml",
+                    "source": "/Users/macbookpro/.gradle/caches/8.9/transforms/4821baabb35e1158e29b61d2de5dfdda/transformed/core-1.13.1/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

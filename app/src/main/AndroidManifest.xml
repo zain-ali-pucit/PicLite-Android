@@ -11,6 +11,11 @@
         android:theme="@style/Theme.PhotoCompressor"
         tools:targetApi="31">
 
+        <!-- Google Mobile Ads (AdMob) App ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4391115602983022~9667538773" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

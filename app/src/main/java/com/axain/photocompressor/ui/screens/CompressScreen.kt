@@ -28,8 +28,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import com.axain.photocompressor.domain.LocalHistoryStore
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
@@ -64,6 +66,16 @@ fun CompressScreen(
     val g = rememberBrandGradients(dark)
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val store = LocalHistoryStore.current
+
+    LaunchedEffect(Unit) {
+        if (state.sources.isEmpty() && store.handoff.isNotEmpty()) {
+            vm.adopt(store.handoff); store.handoff = emptyList()
+        }
+    }
+    LaunchedEffect(state.results) {
+        if (state.results.isNotEmpty()) store.record(state.results)
+    }
 
     val picker = rememberLauncherForActivityResult(
         ActivityResultContracts.PickMultipleVisualMedia(20)

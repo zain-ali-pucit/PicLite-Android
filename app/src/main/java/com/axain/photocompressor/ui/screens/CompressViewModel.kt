@@ -60,6 +60,7 @@ class CompressViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun adopt(sources: List<SourceImage>) = _state.update { it.copy(sources = sources, results = emptyList()) }
     fun selectPreset(preset: TargetPreset) = _state.update { it.copy(preset = preset, results = emptyList()) }
     fun setCustomKb(value: String) =
         _state.update { it.copy(customKb = value.filter { c -> c.isDigit() }.take(7), results = emptyList()) }

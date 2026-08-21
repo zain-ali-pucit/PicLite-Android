@@ -1,22 +1,66 @@
 [
     {
-        "merged": "com.axain.photocompressor.app-debug-54:/xml_file_paths.xml.flat",
-        "source": "com.axain.photocompressor.app-main-56:/xml/file_paths.xml"
+        "merged": "com.axain.photocompressor.app-debug-66:/drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/drawable-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "com.axain.photocompressor.app-debug-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.axain.photocompressor.app-main-56:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.axain.photocompressor.app-debug-54:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.axain.photocompressor.app-main-56:/drawable/ic_launcher_background.xml"
+        "merged": "com.axain.photocompressor.app-debug-66:/drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/drawable-hdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "com.axain.photocompressor.app-debug-54:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.axain.photocompressor.app-main-56:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.axain.photocompressor.app-debug-54:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.axain.photocompressor.app-main-56:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/drawable-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/xml_file_paths.xml.flat",
+        "source": "com.axain.photocompressor.app-main-68:/xml/file_paths.xml"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/drawable-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/drawable-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.axain.photocompressor.app-debug-66:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.axain.photocompressor.app-main-68:/mipmap-mdpi/ic_launcher.png"
     }
 ]

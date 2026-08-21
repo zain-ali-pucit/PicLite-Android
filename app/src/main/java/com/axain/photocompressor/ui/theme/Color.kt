@@ -10,6 +10,8 @@ val Sky = Color(0xFF4EA8DE)
 val Mint = Color(0xFF29C7A6)
 val Amber = Color(0xFFF9A826)
 val Rose = Color(0xFFF25F82)
+val CropGreen = Color(0xFF30C57E)
+val ExifRed = Color(0xFFF2555A)
 
 // Light surfaces
 val Ink = Color(0xFF1A1826)

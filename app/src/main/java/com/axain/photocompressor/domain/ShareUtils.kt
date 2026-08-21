@@ -27,6 +27,24 @@ object ShareUtils {
         })
     }
 
+    fun shareUris(context: Context, uris: List<Uri>, mime: String = "image/*") {
+        if (uris.isEmpty()) return
+        val list = ArrayList(uris)
+        val intent = if (list.size == 1) {
+            Intent(Intent.ACTION_SEND).apply {
+                putExtra(Intent.EXTRA_STREAM, list.first()); type = mime
+            }
+        } else {
+            Intent(Intent.ACTION_SEND_MULTIPLE).apply {
+                putParcelableArrayListExtra(Intent.EXTRA_STREAM, list); type = mime
+            }
+        }
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        context.startActivity(Intent.createChooser(intent, "Share via").apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        })
+    }
+
     fun viewImage(context: Context, result: CompressionResult) {
         val uri: Uri = ImageEngine.shareableUri(context, result.savedCacheFileName)
         val intent = Intent(Intent.ACTION_VIEW).apply {

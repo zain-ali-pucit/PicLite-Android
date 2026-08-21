@@ -56,6 +56,7 @@ class ResizeViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun adopt(sources: List<SourceImage>) = _state.update { it.copy(sources = sources, results = emptyList()) }
     fun selectPreset(p: DimensionPreset) = _state.update { it.copy(preset = p, results = emptyList()) }
     fun setCustom(v: String) = _state.update {
         it.copy(customLongEdge = v.filter { c -> c.isDigit() }.take(5), results = emptyList())

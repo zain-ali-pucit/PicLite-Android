@@ -43,6 +43,7 @@ class ConvertViewModel(app: Application) : AndroidViewModel(app) {
 
     fun selectFormat(f: OutputFormat) = _state.update { it.copy(format = f, results = emptyList()) }
     fun removeSource(s: SourceImage) = _state.update { it.copy(sources = it.sources - s, results = emptyList()) }
+    fun adopt(sources: List<SourceImage>) = _state.update { it.copy(sources = sources, results = emptyList()) }
 
     fun run() {
         val s = _state.value
