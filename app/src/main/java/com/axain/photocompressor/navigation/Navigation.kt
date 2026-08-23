@@ -46,6 +46,8 @@ import com.axain.photocompressor.ui.screens.EnhanceScreen
 import com.axain.photocompressor.ui.screens.FavoritesScreen
 import com.axain.photocompressor.ui.screens.HistoryScreen
 import com.axain.photocompressor.ui.screens.HomeScreen
+import com.axain.photocompressor.ui.screens.PaywallScreen
+import com.axain.photocompressor.ui.screens.SettingsScreen
 import com.axain.photocompressor.ui.screens.LibraryScreen
 import com.axain.photocompressor.ui.screens.QualityScreen
 import com.axain.photocompressor.ui.screens.ResizeScreen
@@ -66,6 +68,8 @@ object Routes {
     const val ENHANCE = "enhance"
     const val DELETE_EXIF = "delete_exif"
     const val CHOOSE_TOOL = "choose_tool"
+    const val SETTINGS = "settings"
+    const val PAYWALL = "paywall"
 }
 
 private val tabRoutes = setOf(Routes.HOME, Routes.LIBRARY, Routes.HISTORY, Routes.FAVORITES)
@@ -81,7 +85,7 @@ fun AppNavHost(dark: Boolean) {
     var cameraUri by remember { mutableStateOf<Uri?>(null) }
 
     val libraryLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.PickMultipleVisualMedia(20)
+        ActivityResultContracts.PickMultipleVisualMedia(com.axain.photocompressor.billing.ProManager.photoLimit())
     ) { uris ->
         if (uris.isNotEmpty()) scope.launch {
             val sources = uris.mapNotNull { ImageEngine.readSource(context, it) }
@@ -134,7 +138,8 @@ fun AppNavHost(dark: Boolean) {
                 HomeScreen(dark,
                     onOpen = { r -> nav.navigate(r) },
                     onPlus = { showSourceDialog = true },
-                    onSeeAll = { nav.switchTab(Routes.HISTORY) })
+                    onSeeAll = { nav.switchTab(Routes.HISTORY) },
+                    onSettings = { nav.navigate(Routes.SETTINGS) })
             }
             composable(Routes.LIBRARY) { LibraryScreen(dark) }
             composable(Routes.HISTORY) { HistoryScreen(dark) }
@@ -151,6 +156,10 @@ fun AppNavHost(dark: Boolean) {
             composable(Routes.CHOOSE_TOOL) {
                 ChooseToolScreen(dark, { nav.popBackStack() }, onOpen = { r -> nav.navigate(r) })
             }
+            composable(Routes.SETTINGS) {
+                SettingsScreen(dark, { nav.popBackStack() }, onUpgrade = { nav.navigate(Routes.PAYWALL) })
+            }
+            composable(Routes.PAYWALL) { PaywallScreen(dark, { nav.popBackStack() }) }
         }
 
         if (route in tabRoutes) {

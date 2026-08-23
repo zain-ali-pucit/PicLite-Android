@@ -179,7 +179,7 @@ fun EnhanceScreen(dark: Boolean, onBack: () -> Unit) {
     LaunchedEffect(state.results) { if (state.results.isNotEmpty()) store.record(state.results) }
 
     val picker = rememberLauncherForActivityResult(
-        ActivityResultContracts.PickMultipleVisualMedia(20)
+        ActivityResultContracts.PickMultipleVisualMedia(com.axain.photocompressor.billing.ProManager.photoLimit())
     ) { uris -> vm.onPickResult(uris) }
     fun launchPicker() = picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
 

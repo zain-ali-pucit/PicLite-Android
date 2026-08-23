@@ -88,6 +88,17 @@ class HistoryStore(private val context: Context) {
     fun isFavorite(entry: HistoryEntry): Boolean =
         entries.firstOrNull { it.id == entry.id }?.favorite ?: false
 
+    /** Remove a history entry and delete its file. */
+    fun delete(entry: HistoryEntry) {
+        val idx = entries.indexOfFirst { it.id == entry.id }
+        if (idx >= 0) {
+            entries.removeAt(idx)
+            runCatching { File(dir, entry.file).delete() }
+            if (detail?.id == entry.id) detail = null
+            save()
+        }
+    }
+
     private fun save() {
         runCatching {
             val arr = JSONArray()

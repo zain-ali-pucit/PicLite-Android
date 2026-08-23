@@ -27,7 +27,12 @@ import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material3.Icon
+import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SwipeToDismissBox
+import androidx.compose.material3.SwipeToDismissBoxValue
+import androidx.compose.material3.rememberSwipeToDismissBoxState
+import androidx.compose.runtime.key
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -143,7 +148,9 @@ fun HistoryScreen(dark: Boolean) {
                         Text(title, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
                             color = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(start = 2.dp))
-                        entries.forEach { HistoryRow(it) }
+                        entries.forEach { e ->
+                            key(e.id) { SwipeToDeleteRow({ store.delete(e) }) { HistoryRow(e) } }
+                        }
                     }
                 }
             }
@@ -160,7 +167,9 @@ fun FavoritesScreen(dark: Boolean) {
             EmptyHint(Icons.Rounded.StarBorder, "Star a result in History to keep it here.")
         } else {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                favs.forEach { HistoryRow(it) }
+                favs.forEach { e ->
+                    key(e.id) { SwipeToDeleteRow({ store.delete(e) }) { HistoryRow(e) } }
+                }
             }
         }
     }
@@ -223,4 +232,27 @@ private fun groupByDay(entries: List<HistoryEntry>): List<Pair<String, List<Hist
             }
             title to list.sortedByDescending { it.date }
         }
+}
+
+@Composable
+fun SwipeToDeleteRow(onDelete: () -> Unit, content: @Composable () -> Unit) {
+    val state = rememberSwipeToDismissBoxState(
+        confirmValueChange = { v ->
+            if (v == SwipeToDismissBoxValue.EndToStart) { onDelete(); true } else false
+        }
+    )
+    SwipeToDismissBox(
+        state = state,
+        enableDismissFromStartToEnd = false,
+        backgroundContent = {
+            Box(
+                Modifier.fillMaxSize().clip(RoundedCornerShape(20.dp))
+                    .background(Color(0xFFE24B4A)).padding(end = 24.dp),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Icon(Icons.Rounded.Delete, contentDescription = "Delete",
+                    tint = Color.White, modifier = Modifier.size(24.dp))
+            }
+        }
+    ) { content() }
 }

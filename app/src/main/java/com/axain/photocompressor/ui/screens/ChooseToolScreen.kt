@@ -36,7 +36,7 @@ fun ChooseToolScreen(dark: Boolean, onBack: () -> Unit, onOpen: (String) -> Unit
     var sources by remember { mutableStateOf(store.handoff) }
 
     val picker = rememberLauncherForActivityResult(
-        ActivityResultContracts.PickMultipleVisualMedia(20)
+        ActivityResultContracts.PickMultipleVisualMedia(com.axain.photocompressor.billing.ProManager.photoLimit())
     ) { uris ->
         if (uris.isNotEmpty()) scope.launch {
             sources = uris.mapNotNull { ImageEngine.readSource(context, it) }
@@ -64,8 +64,12 @@ fun ChooseToolScreen(dark: Boolean, onBack: () -> Unit, onOpen: (String) -> Unit
             items(allTools.chunked(3)) { row ->
                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     row.forEach { tool ->
-                        ToolTile(tool, Modifier.weight(1f)) {
-                            if (sources.isNotEmpty()) {
+                        val locked = tool.route in proOnlyRoutes &&
+                            !com.axain.photocompressor.billing.ProManager.isPro
+                        ToolTile(tool, Modifier.weight(1f), locked = locked) {
+                            if (locked) {
+                                onOpen(com.axain.photocompressor.navigation.Routes.PAYWALL)
+                            } else if (sources.isNotEmpty()) {
                                 store.handoff = sources
                                 onOpen(tool.route)
                             }

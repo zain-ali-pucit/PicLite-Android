@@ -32,6 +32,7 @@ object InterstitialAdManager {
 
     /** Requests an interstitial if none is loaded or loading. Safe to call repeatedly. */
     fun preload(context: Context) {
+        if (com.axain.photocompressor.billing.ProManager.isPro) return
         if (interstitialAd != null || isLoading) return
         isLoading = true
         InterstitialAd.load(
@@ -59,6 +60,7 @@ object InterstitialAdManager {
      * Always safe to call — navigation never stalls waiting on an ad.
      */
     fun showThenContinue(activity: Activity, onDone: () -> Unit) {
+        if (com.axain.photocompressor.billing.ProManager.isPro) { onDone(); return }
         val ad = interstitialAd
         val now = System.currentTimeMillis()
         if (ad == null || now - lastShownAt < MIN_INTERVAL_MS) {

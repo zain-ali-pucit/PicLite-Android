@@ -62,5 +62,6 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.play.services.ads)
+    implementation(libs.billing.ktx)
     debugImplementation(libs.androidx.ui.tooling)
 }

@@ -30,6 +30,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.AutoAwesome
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -51,7 +53,10 @@ import coil.compose.AsyncImage
 import com.axain.photocompressor.R
 import com.axain.photocompressor.domain.HistoryEntry
 import com.axain.photocompressor.domain.LocalHistoryStore
+import com.axain.photocompressor.billing.ProManager
 import com.axain.photocompressor.domain.formatBytes
+import com.axain.photocompressor.navigation.Routes
+import com.axain.photocompressor.ui.theme.Amber
 import com.axain.photocompressor.ui.theme.Sky
 import com.axain.photocompressor.ui.theme.Violet
 import com.axain.photocompressor.ui.theme.rememberBrandGradients
@@ -61,7 +66,8 @@ fun HomeScreen(
     dark: Boolean,
     onOpen: (String) -> Unit,
     onPlus: () -> Unit,
-    onSeeAll: () -> Unit
+    onSeeAll: () -> Unit,
+    onSettings: () -> Unit
 ) {
     val g = rememberBrandGradients(dark)
     val store = LocalHistoryStore.current
@@ -81,6 +87,21 @@ fun HomeScreen(
             HeroCard(dark, onPlus)
             ToolGrid(onOpen)
             if (store.entries.isNotEmpty()) RecentSection(onSeeAll)
+        }
+
+        Box(
+            Modifier
+                .align(Alignment.TopEnd)
+                .padding(top = statusTop + 6.dp, end = 20.dp)
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.surface)
+                .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                .clickable(onClick = onSettings),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(Icons.Rounded.Settings, contentDescription = "Settings",
+                tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(20.dp))
         }
     }
 }
@@ -205,13 +226,18 @@ fun PhotoCardGlyph(size: Dp, modifier: Modifier = Modifier) {
     }
 }
 
+val proOnlyRoutes = setOf(Routes.BATCH, Routes.QUALITY)
+
 @Composable
 private fun ToolGrid(onOpen: (String) -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         allTools.chunked(3).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 row.forEach { tool ->
-                    ToolTile(tool, Modifier.weight(1f)) { onOpen(tool.route) }
+                    val locked = tool.route in proOnlyRoutes && !ProManager.isPro
+                    ToolTile(tool, Modifier.weight(1f), locked = locked) {
+                        onOpen(if (locked) Routes.PAYWALL else tool.route)
+                    }
                 }
                 repeat(3 - row.size) { Spacer(Modifier.weight(1f)) }
             }
@@ -220,7 +246,7 @@ private fun ToolGrid(onOpen: (String) -> Unit) {
 }
 
 @Composable
-fun ToolTile(tool: ToolInfo, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun ToolTile(tool: ToolInfo, modifier: Modifier = Modifier, locked: Boolean = false, onClick: () -> Unit) {
     Column(
         modifier
             .clip(RoundedCornerShape(20.dp))
@@ -230,11 +256,23 @@ fun ToolTile(tool: ToolInfo, modifier: Modifier = Modifier, onClick: () -> Unit)
             .padding(vertical = 18.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
-            Modifier.size(52.dp).clip(RoundedCornerShape(14.dp)).background(tool.color.copy(alpha = 0.14f)),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(tool.icon, contentDescription = null, tint = tool.color, modifier = Modifier.size(24.dp))
+        Box(contentAlignment = Alignment.TopEnd) {
+            Box(
+                Modifier.size(52.dp).clip(RoundedCornerShape(14.dp)).background(tool.color.copy(alpha = 0.14f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(tool.icon, contentDescription = null, tint = tool.color, modifier = Modifier.size(24.dp))
+            }
+            if (locked) {
+                Box(
+                    Modifier.size(18.dp).clip(CircleShape).background(Amber)
+                        .border(2.dp, MaterialTheme.colorScheme.surface, CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(Icons.Rounded.Lock, contentDescription = "Pro", tint = Color.White,
+                        modifier = Modifier.size(9.dp))
+                }
+            }
         }
         Spacer(Modifier.height(10.dp))
         Text(tool.title, fontSize = 13.sp, maxLines = 1,
