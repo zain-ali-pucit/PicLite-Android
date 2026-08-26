@@ -12,14 +12,14 @@ val keystorePropsFile = rootProject.file("keystore.properties")
 if (keystorePropsFile.exists()) keystoreProps.load(FileInputStream(keystorePropsFile))
 
 android {
-    namespace = "com.axain.photocompressor"
+    namespace = "com.axainstudios.piclite"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.axain.photocompressor"
+        applicationId = "com.axainstudios.piclite"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
 
         vectorDrawables {
