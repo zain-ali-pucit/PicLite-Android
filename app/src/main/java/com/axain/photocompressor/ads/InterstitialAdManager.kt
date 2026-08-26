@@ -21,7 +21,7 @@ object InterstitialAdManager {
     // Production interstitial ad unit ID for PicLite.
     // While developing, swap this for Google's test unit "ca-app-pub-3940256099942544/1033173712"
     // (or register your device as a test device) so you never click live ads.
-    private const val AD_UNIT_ID = "ca-app-pub-4391115602983022/6059571456"
+    private const val AD_UNIT_ID = "ca-app-pub-6901103725908073/7191055844"
 
     // Show at most one interstitial per minute regardless of how often it's triggered.
     private const val MIN_INTERVAL_MS = 60_000L

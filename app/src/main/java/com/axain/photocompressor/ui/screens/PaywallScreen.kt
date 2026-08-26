@@ -155,6 +155,19 @@ fun PaywallScreen(dark: Boolean, onClose: () -> Unit) {
                 }
                 Text("One-time purchase. No subscription.", fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    fun open(url: String) = runCatching {
+                        context.startActivity(
+                            android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+                                .addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                        )
+                    }
+                    Text("Terms of Use", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.clickable { open("https://piclite.axainstudios.com/terms.html") })
+                    Text("·", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("Privacy Policy", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.clickable { open("https://piclite.axainstudios.com/privacy.html") })
+                }
             }
         }
     }
