@@ -37,6 +37,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.axainstudios.piclite.navigation.Routes
@@ -105,12 +106,19 @@ private fun RowScope.BarItem(active: Boolean, icon: ImageVector, label: String, 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
-            Modifier.padding(horizontal = 14.dp, vertical = 7.dp),
+            Modifier.padding(horizontal = 2.dp, vertical = 7.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(icon, contentDescription = label, tint = tint, modifier = Modifier.size(17.dp))
             Spacer(Modifier.height(4.dp))
-            Text(label, fontSize = 11.sp, color = tint)
+            Text(
+                label,
+                fontSize = 11.sp,
+                color = tint,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Visible
+            )
         }
     }
 }

@@ -13,12 +13,13 @@ if (keystorePropsFile.exists()) keystoreProps.load(FileInputStream(keystoreProps
 
 android {
     namespace = "com.axainstudios.piclite"
-    compileSdk = 35
+    compileSdk = 36
+    buildToolsVersion = "36.1.0"
 
     defaultConfig {
         applicationId = "com.axainstudios.piclite"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 2
         versionName = "1.0"
 
