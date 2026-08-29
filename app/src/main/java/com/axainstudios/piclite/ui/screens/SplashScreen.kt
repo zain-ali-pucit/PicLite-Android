@@ -78,7 +78,7 @@ fun SplashScreen(dark: Boolean, onFinished: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(22.dp)
         ) {
             Image(
-                painter = painterResource(R.mipmap.ic_launcher),
+                painter = painterResource(R.mipmap.ic_launcher_fg),
                 contentDescription = "PicLite",
                 modifier = Modifier
                     .size(112.dp)

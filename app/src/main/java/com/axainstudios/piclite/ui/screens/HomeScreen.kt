@@ -147,7 +147,9 @@ private fun Brand() {
 @Composable
 fun PLogoMark(size: Dp) {
     Image(
-        painter = painterResource(R.mipmap.ic_launcher),
+        // Use the raster foreground PNG — R.mipmap.ic_launcher is an adaptive-icon XML
+        // on API 26+, which painterResource cannot load.
+        painter = painterResource(R.mipmap.ic_launcher_fg),
         contentDescription = "PicLite",
         modifier = Modifier.size(size).clip(RoundedCornerShape(size * 0.29f))
     )

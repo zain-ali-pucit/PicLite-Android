@@ -22,7 +22,7 @@ import com.android.billingclient.api.QueryPurchasesParams
 object ProManager {
 
     /** One-time (in-app) product ID — must match the Play Console product. */
-    const val PRODUCT_ID = "com.axain.piclite.pro"
+    const val PRODUCT_ID = "piclite_pro"
     const val FREE_PHOTO_LIMIT = 5
     const val PRO_PHOTO_LIMIT = 50
 

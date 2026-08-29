@@ -141,7 +141,7 @@ private fun Header() {
             .padding(18.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(painterResource(R.mipmap.ic_launcher), contentDescription = null,
+        Image(painterResource(R.mipmap.ic_launcher_fg), contentDescription = null,
             modifier = Modifier.size(56.dp).clip(RoundedCornerShape(16.dp)))
         Spacer(Modifier.width(14.dp))
         Column {
